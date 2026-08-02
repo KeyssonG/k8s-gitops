@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: multithread-interno-service
+  namespace: producao
+  labels:
+    app: multithread-interno-react
+spec:
+  selector:
+    app: multithread-interno-react
+  ports:
+    - name: http
+      protocol: TCP
+      port: 5174
+      targetPort: 5174
+      nodePort: 31008
+  type: LoadBalancer

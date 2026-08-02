@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: multithread-interno-deployment
+  namespace: producao
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: multithread-interno-react
+  template:
+    metadata:
+      labels:
+        app: multithread-interno-react
+      annotations:
+        kubectl.io/restartedAt: 2026-07-29T00:00:00Z
+    spec:
+      containers:
+        - name: multithread-interno-container
+          image: keyssong/react-multithread-interno:latest
+          imagePullPolicy: Always              
+          ports:
+            - containerPort: 5174                

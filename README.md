@@ -11,6 +11,8 @@ Este repositório é **somente leitura para humanos**: ele não deve ser alterad
 |----------------------|--------------------------|-----------------------------------------------|
 | `nexus/`             | Backend `nexus-multithread` | `nexus/nexus-deployment.yaml`              |
 | `react-multithread/` | Frontend `api-multithread`  | `react-multithread/multithread.deployment.yaml` |
+| `msgsend/`           | Backend `msgsend-service`   | `msgsend/msgsend-deployment.yaml`          |
+| `react-multithread-interno/` | Portal `api-portal-multithread` | `react-multithread-interno/multithread-interno.deployment.yaml` |
 
 ## Fluxo (GitOps com Jenkins)
 
@@ -39,6 +41,14 @@ kubectl apply -f nexus/nexus-service.yaml
 # Frontend
 kubectl apply -f react-multithread/multithread.deployment.yaml
 kubectl apply -f react-multithread/multithread-service.yaml
+
+# msgsend
+kubectl apply -f msgsend/msgsend-deployment.yaml
+kubectl apply -f msgsend/msgsend-service.yaml
+
+# Portal interno
+kubectl apply -f react-multithread-interno/multithread-interno.deployment.yaml
+kubectl apply -f react-multithread-interno/multithread-interno-service.yaml
 ```
 
 ## Credenciais

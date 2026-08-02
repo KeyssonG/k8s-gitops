@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: msgsend-deployment
+  namespace: producao
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: msgsend
+  template:
+    metadata:
+      labels:
+        app: msgsend
+    spec:
+      containers:
+        - name: msgsend-container
+          image: keyssong/msgsend:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8088
+          envFrom:
+            - configMapRef:
+                name: app-config
+            - secretRef:
+                name: app-secret
