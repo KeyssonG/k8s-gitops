@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: multithread-service
+  namespace: producao
+  labels:
+    app: multithread-react
+spec:
+  selector:
+    app: multithread-react
+  ports:
+    - name: http
+      protocol: TCP
+      port: 5173
+      targetPort: 5173
+      nodePort: 31006
+  type: LoadBalancer
