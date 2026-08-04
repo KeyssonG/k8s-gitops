@@ -35,6 +35,8 @@ spec:
               value: "7"
             - name: BACKUP_QUEUE
               value: "backup.fila"
+            - name: EMAIL_TO
+              value: "keyssongomes.dev@gmail.com"
           volumeMounts:
             - name: backup-storage
               mountPath: /backups
