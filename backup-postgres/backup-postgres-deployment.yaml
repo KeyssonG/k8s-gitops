@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: backup-postgres-container
-          image: keyssong/backup-postgres:latest
+          image: keyssong/backup-postgres:build-2
           imagePullPolicy: Always
           envFrom:
             - configMapRef:
