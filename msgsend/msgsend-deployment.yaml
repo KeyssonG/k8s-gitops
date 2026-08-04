@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: msgsend-container
-          image: keyssong/msgsend:latest
+          image: keyssong/msgsend:build-22
           imagePullPolicy: Always
           ports:
             - containerPort: 8088
