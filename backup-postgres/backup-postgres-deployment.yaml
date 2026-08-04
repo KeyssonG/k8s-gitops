@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backup-postgres-deployment
+  namespace: producao
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backup-postgres
+  template:
+    metadata:
+      labels:
+        app: backup-postgres
+    spec:
+      containers:
+        - name: backup-postgres-container
+          image: keyssong/backup-postgres:latest
+          imagePullPolicy: Always
+          envFrom:
+            - configMapRef:
+                name: app-config
+            - secretRef:
+                name: app-secret
+            - secretRef:
+                name: backup-git-secret
+          env:
+            - name: BACKUP_REPO_URL
+              value: "https://github.com/KeyssonG/postgres-backups.git"
+            - name: BACKUP_DATABASES
+              value: "managerPROD"
+            - name: BACKUP_INTERVAL_MINUTES
+              value: "60"
+            - name: BACKUP_RETENTION_DAYS
+              value: "7"
+            - name: BACKUP_QUEUE
+              value: "backup.fila"
+          volumeMounts:
+            - name: backup-storage
+              mountPath: /backups
+      volumes:
+        - name: backup-storage
+          emptyDir: {}
