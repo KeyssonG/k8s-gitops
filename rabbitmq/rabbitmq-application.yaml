@@ -1,10 +1,10 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: redis
+  name: rabbitmq
   namespace: argocd
   labels:
-    app.kubernetes.io/name: redis
+    app.kubernetes.io/name: rabbitmq
 spec:
   project: default
   destination:
@@ -12,7 +12,7 @@ spec:
     namespace: producao
   source:
     repoURL: https://github.com/KeyssonG/k8s-gitops.git
-    path: redis/manifests
+    path: rabbitmq/manifests
     targetRevision: HEAD
   syncPolicy:
     automated:
