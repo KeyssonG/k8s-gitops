@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-config
+  namespace: producao
+  labels:
+    app: app-config
+data:
+  DB_HOST: postgresql
+  DB_NAME: managerPROD
+  DB_PORT: "5432"
+  DB_URL: jdbc:postgresql://postgresql:5432/managerPROD
+  DB_USER: postgres
+  HOST_RABBIT: rabbitmq
+  HOST_REDIS: redis
+  HOST_SMTP: smtp.gmail.com
+  PORT_RABBIT: "5672"
+  PORT_REDIS: "6379"
+  PORT_SMTP: "587"
+  SERVER_PORT: "8088"
+  SPRING_PROFILES_ACTIVE: prod
+  USER_RABBIT: admin
+  USER_SMTP: multithreadteam@gmail.com
